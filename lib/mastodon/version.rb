@@ -29,11 +29,11 @@ module Mastodon
     end
 
     def to_s
-      [to_a.join('.'), flags].join
+      [to_a.join('.'), flags, '~neko'].join
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY') { 'tootsuite/mastodon' }
+      'noorus/mastodon'
     end
 
     def source_base_url
