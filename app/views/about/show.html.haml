@@ -5,11 +5,16 @@
   %link{ rel: 'canonical', href: about_url }/
   = render partial: 'shared/og'
 
-.landing
-  .landing__brand
-    = link_to root_url, class: 'brand' do
-      = image_pack_tag 'logo_full.svg', alt: 'Mastodon'
-      %span.brand__tagline=t 'about.tagline'
+.landing-page.alternative
+  .container
+    .neko-topbar
+      %span.neko-topbar__logo
+        = image_tag asset_pack_path('ankea-logo.png'), alt: 'Ankea'
+    .grid
+      %header.column-0.neko-header#header
+        .neko-header__title
+          = link_to root_url, class: 'neko-header__title__logo' do
+            = image_tag asset_pack_path('neko-logo.png'), alt: 'Neko Academy'
 
   .landing__grid
     .landing__grid__column.landing__grid__column-registration
