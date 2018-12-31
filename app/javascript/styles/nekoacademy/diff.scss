@@ -19,8 +19,40 @@ $neko-content-bordercolor: #e4e4e4;
 $neko-post-gutter: 15px;
 $neko-post-padding: 10px 15px;
 
-body {
-  background: #badeff;
+$neko-bg-border-color: #f1d2fe; // #95adc7
+
+html {
+  min-height: 100%;
+  min-width: 240px;
+  box-sizing: border-box;
+  display: block;
+}
+
+body,
+body.admin {
+  background: #badeff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: inherit !important;
+  position: static !important;
+  width: 100%;
+  height: 100%;
+}
+
+.admin-wrapper {
+  display: flex;
+  justify-content: left;
+  .sidebar-wrapper,
+  .content-wrapper {
+    display: block;
+    height: auto;
+    flex: none;
+  }
+}
+
+.neko-body {
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 .neko-bg {
@@ -53,7 +85,7 @@ body {
     .neko-bg__left {
       left: -($neko-bg-decor-width + $neko-bg-border-width);
       background-image: url("../images/neko/bg-left_940.jpg");
-      border-right: 1px solid #95adc7;
+      border-right: 1px solid $neko-bg-border-color;
     }
     .neko-bg__left:before {
       content: " ";
@@ -67,7 +99,7 @@ body {
     .neko-bg__right {
       right: -($neko-bg-decor-width + $neko-bg-border-width);
       background-image: url("../images/neko/bg-right_940.jpg");
-      border-left: 1px solid #95adc7;
+      border-left: 1px solid $neko-bg-border-color;
     }
     .neko-bg__right:before {
       content: " ";
@@ -116,6 +148,107 @@ body {
       position: relative;
     }
   }
+}
+
+.neko-footer {
+  background: url("../images/neko/footer-bg_2400.jpg"), rgb(255, 47, 109);
+  border-top: 0.0625rem solid #b34066;
+  padding: 12px 20px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 12px;
+  color: white;
+  .grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    .column-0 {
+      grid-column: 1;
+      grid-row: 1;
+      min-width: 0;
+    }
+    .column-1 {
+      grid-column: 2;
+      grid-row: 1;
+      min-width: 0;
+    }
+    .column-2 {
+      grid-column: 3;
+      grid-row: 1;
+      min-width: 0;
+      text-align: center;
+    }
+    .column-3 {
+      grid-column: 4;
+      grid-row: 1;
+      min-width: 0;
+    }
+    .column-4 {
+      grid-column: 5;
+      grid-row: 1;
+      min-width: 0;
+    }
+  }
+  h4 {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: $darker-text-color;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  h4.neko-footer__what-is {
+    margin: 4px 0 0 0;
+    &, a {
+      color: white;
+    }
+  }
+  ul a {
+    text-decoration: none;
+    color: white;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+  .brand {
+    margin: 0 auto;
+    img {
+      height: 36px;
+      width: auto;
+    }
+  }
+}
+
+.logo-container {
+  margin: 30px auto 0 !important;
+  padding: 0 25px !important;
+  .neko-logobox {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.container,
+.public-layout .container {
+  max-width: none !important;
+}
+
+.app-holder,
+.app-holder > div {
+  overflow: auto !important;
+  position: absolute;
+}
+
+.app-holder#mastodon {
+  height: calc(100% - 100px);
 }
 
 .landing-page {
@@ -236,11 +369,25 @@ body {
 
 .column-header {
   background: url("../images/neko/bg-cloudsbar_1920.jpg") center top / auto 120% repeat white !important;
-  border-top: 1px solid rgb(181, 206, 218) !important;
+//  border-top: 1px solid rgb(181, 206, 218) !important;
   border-bottom: 1px solid rgb(243, 248, 249) !important;
-  color: white;
-  font-weight: bold;
-  text-shadow: rgba(70, 101, 105, 0.86) 0px 1px 3px;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 20px !important;
+  min-height: 48px;
+  > button {
+    padding: 10px 0 10px 14px !important;
+    text-shadow: rgb(55, 132, 175) 0px 1px 3px !important;
+  }
+  .column-header__back-button,
+  .column-header__button {
+    color: white !important;
+    background: transparent !important;
+  }
+  .column-header__button.active {
+    color: black !important;
+    background: #f7fbff7a !important;
+  }
 }
 
 .neko-header {
@@ -581,6 +728,8 @@ body {
   .public-account-header,
   .public-account-bio {
     box-shadow: none;
+    border-radius: 0 !important;
+    margin: 0 !important;
   }
 
   .header {

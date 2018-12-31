@@ -3,10 +3,7 @@
 
 - content_for :content do
   .container-alt
-    .logo-container
-      %h1
-        = link_to root_path do
-          = image_pack_tag 'logo_full.svg', alt: 'Mastodon'
+    = render partial: 'neko/logobox'
 
     .form-container
       = render 'flashes'
