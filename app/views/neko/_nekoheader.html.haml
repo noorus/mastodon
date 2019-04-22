@@ -1,0 +1,21 @@
+.grid
+  %header.column-0.neko-header#header
+    .neko-header__title
+      = link_to root_url, class: 'neko-header__title__logo' do
+        = image_tag asset_pack_path('media/images/neko/neko-logo.png'), alt: @instance_presenter.site_title
+
+- unless @hide_navbar
+  %nav.neko-topnav
+    .neko-topnav__left
+      = link_to 'Browse', public_timeline_path, class: 'nav-link optional' if Setting.timeline_preview
+      = link_to 'Explore', explore_path, class: 'nav-link optional' if Setting.profile_directory
+      = link_to 'About', about_more_path, class: 'nav-link optional'
+      = link_to 'Mobile Apps', 'https://joinmastodon.org/apps', class: 'nav-link optional'
+    .neko-topnav__center
+    .neko-topnav__right
+      - if user_signed_in?
+        = link_to t('settings.back'), root_url, class: 'nav-link nav-button webapp-btn'
+      - else
+        = link_to t('auth.login'), new_user_session_path, class: 'webapp-btn nav-link nav-button'
+        = link_to t('auth.register'), available_sign_up_path, class: 'webapp-btn nav-link nav-button'
+

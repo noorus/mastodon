@@ -39,6 +39,14 @@ body.admin {
   height: 100%;
 }
 
+.memoriam-widget, .page-header {
+  box-shadow: none !important;
+}
+
+.page-header {
+  margin-top: 0 !important;
+}
+
 .admin-wrapper {
   display: flex;
   justify-content: left;
@@ -412,6 +420,57 @@ body.admin {
       }
     }
   }
+}
+
+.neko-topnav {
+  background: #b3c3d1;
+  box-shadow: none;
+  border-radius: 0!important;
+  margin: 0!important;
+  height: 48px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  .neko-topnav__left,
+  .neko-topnav__center,
+  .neko-topnav__right {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex: 1 1 33.3%;
+    min-height: 1px;
+    .nav-button {
+      background: #a6b9c9;
+      margin: 8px 8px 8px 0;
+      border-radius: 4px;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 1.2rem;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #282c37;
+      white-space: nowrap;
+      text-align: center;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.neko-topnav__left {
+  justify-content: flex-start;
+}
+.neko-topnav__center {
+  justify-content: center;
+}
+.neko-topnav__right {
+  justify-content: flex-end;
 }
 
 // Change the colors of button texts
