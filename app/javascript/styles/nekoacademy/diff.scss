@@ -50,11 +50,22 @@ body.admin {
 .admin-wrapper {
   display: flex;
   justify-content: left;
+  min-height: calc(100vh - 41px);
   .sidebar-wrapper,
   .content-wrapper {
     display: block;
     height: auto;
     flex: none;
+  }
+  .sidebar {
+    .logo {
+      margin: 22px auto 12px !important;
+      width: 90% !important;
+      height: auto !important;
+    }
+  }
+  .content-wrapper .content {
+    padding: 40px 15px 20px 25px !important;
   }
 }
 
