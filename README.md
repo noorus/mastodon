@@ -1,5 +1,7 @@
 ![Mastodon](https://i.imgur.com/NhZc40l.png)
-========
+===
+`⚠️ neko-academy revision - contains unofficial modifications`  
+**`additional artwork and other assets are NOT covered by the source license.`**
 
 [![GitHub release](https://img.shields.io/github/release/tootsuite/mastodon.svg)][releases]
 [![Build Status](https://img.shields.io/circleci/project/github/tootsuite/mastodon.svg)][circleci]
