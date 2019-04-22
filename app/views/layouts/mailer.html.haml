@@ -24,7 +24,7 @@
                               %tr
                                 %td.column-cell
                                   = link_to root_url do
-                                    = image_tag full_pack_url('media/images/mailer/logo_full.png'), alt: 'Mastodon', height: 34, class: 'logo'
+                                    = image_tag full_pack_url('media/images/neko/neko-minilogo_wtitle280.png'), alt: 'Neko Academy', class: 'logo'
 
     = yield
 
@@ -45,8 +45,9 @@
                           %table.column{ cellspacing: 0, cellpadding: 0 }
                             %tbody
                               %td.column-cell
-                                %p= t 'about.hosted_on', domain: site_hostname
+                                %p
+                                  <b>Mastodon</b> instance hosted on <b>#{site_hostname}</b>
                                 %p= link_to t('application_mailer.notification_preferences'), settings_notifications_url
                               %td.column-cell.text-right
                                 = link_to root_url do
-                                  = image_tag full_pack_url('media/images/mailer/logo_transparent.png'), alt: 'Mastodon', height: 24
+                                  = image_tag full_pack_url('media/images/neko/mastodon-minimaillogo.png'), alt: 'Mastodon', height: 24
