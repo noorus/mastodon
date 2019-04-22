@@ -99,8 +99,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_theme
-    return Setting.theme unless Themes.instance.names.include? current_user&.setting_theme
-    current_user.setting_theme
+    Setting.theme
   end
 
   def cache_collection(raw, klass)
