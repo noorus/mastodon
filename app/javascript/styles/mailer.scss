@@ -1,13 +1,6 @@
 @import 'mastodon/variables';
 @import 'fonts/roboto';
 
-$mailbg-top-color: #fafafa;
-$mailbg-bottom-color: #79ffe8;
-$mailtext-header-color: #fe007f;
-$mailtext-subhead-color: #ef6798;
-$mailtext-body-color: #5d6271;
-$mailtext-footer-color: #616a83;
-
 table,
 td,
 div {
@@ -38,7 +31,7 @@ a {
   &:visited,
   span {
     text-decoration: none;
-    color: #eb2c50;
+    color: $ui-highlight-color;
   }
 
   #outlook & {
@@ -92,7 +85,7 @@ td {
 .email-body,
 html,
 body {
-  background-color: #badeff;
+  background-color: lighten($ui-base-color, 4%);
 }
 
 .email-container,
@@ -185,7 +178,7 @@ p {
 p {
   font-size: 15px;
   line-height: 23px;
-  color: $mailtext-body-color;
+  color: $ui-primary-color;
   mso-line-height-rule: exactly;
   text-rendering: optimizelegibility;
 }
@@ -205,17 +198,13 @@ p {
   }
 }
 
-.column-cell p.lead {
-  color: $mailtext-subhead-color !important;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: $mailtext-header-color;
+  color: $ui-secondary-color;
   margin-left: 0;
   margin-right: 0;
   margin-top: 20px;
@@ -243,7 +232,7 @@ h5 {
   font-size: 16px;
   line-height: 21px;
   font-weight: 700;
-  color: lime;
+  color: lighten($ui-base-color, 34%);
 }
 
 .input-cell {
@@ -254,7 +243,7 @@ h5 {
 
 .input {
   td {
-    background: gray;
+    background: darken($ui-base-color, 8%);
     border-radius: 4px;
     padding: 16px;
     line-height: 20px;
@@ -277,17 +266,15 @@ h5 {
 }
 
 .content-cell {
-  background-color: $mailbg-bottom-color;
+  background-color: darken($ui-base-color, 4%);
+
   &.darker {
-    background-color: $mailbg-bottom-color;
-  }
-  .header {
-    color: white !important;
+    background-color: darken($ui-base-color, 8%);
   }
 }
 
 .hero {
-  background-color: $mailbg-top-color;
+  background-color: $ui-base-color;
   padding-top: 20px;
 }
 
@@ -305,7 +292,8 @@ h5 {
 
 .header {
   border-radius: 5px 5px 0 0;
-  background-color: #ff2891;
+  background-color: darken($ui-base-color, 8%);
+
   .column-cell {
     text-align: center;
     padding-top: 20px;
@@ -325,7 +313,7 @@ h5 {
 .footer {
   .column-cell,
   p {
-    color: $mailtext-footer-color;
+    color: lighten($ui-base-color, 34%);
   }
 
   p {
@@ -338,7 +326,7 @@ h5 {
   }
 
   a {
-    color: $mailtext-footer-color;
+    color: lighten($ui-base-color, 34%);
     text-decoration: underline;
   }
 
@@ -435,7 +423,7 @@ h5 {
     mso-line-height-rule: exactly;
     padding: 16px;
     border-radius: 80px;
-    background: #ff8644;
+    background: $success-green;
   }
 
   &.alert-icon td {
