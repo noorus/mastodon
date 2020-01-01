@@ -37,6 +37,9 @@
       .neko-bg
         .neko-bg__left
         .neko-bg__content
-          = render partial: 'neko/topbar'
+          - if is_app?
+            = render partial: 'neko/app_topbar'
+          - else
+            = render partial: 'neko/topbar'
           = content_for?(:content) ? yield(:content) : yield
         .neko-bg__right
