@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 
   def index
     @body_classes = 'app-body'
+    @is_app = true
   end
 
   private

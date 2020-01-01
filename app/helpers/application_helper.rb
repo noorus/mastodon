@@ -106,6 +106,10 @@ module ApplicationHelper
     output.reject(&:blank?).join(' ')
   end
 
+  def is_app?
+    (@is_app||false)
+  end
+
   def cdn_host
     Rails.configuration.action_controller.asset_host
   end
