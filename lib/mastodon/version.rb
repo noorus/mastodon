@@ -5,27 +5,27 @@ module Mastodon
     module_function
 
     def major
-      2
+      3
     end
 
     def minor
-      8
-    end
-
-    def patch
       0
     end
 
-    def pre
-      nil
+    def patch
+      1
     end
 
     def flags
       ''
     end
 
+    def suffix
+      ''
+    end
+
     def to_a
-      [major, minor, patch, pre].compact
+      [major, minor, patch].compact
     end
 
     def to_s
@@ -42,7 +42,7 @@ module Mastodon
 
     # specify git tag or commit hash here
     def source_tag
-      nil
+      ENV.fetch('SOURCE_TAG') { nil }
     end
 
     def source_url
