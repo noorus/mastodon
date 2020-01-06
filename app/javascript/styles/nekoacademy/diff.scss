@@ -22,6 +22,15 @@ $neko-post-padding: 10px 15px;
 
 $neko-bg-border-color: #f1d2fe; // #95adc7
 
+$neko-secondary-color: #fffafa;
+
+$neko-input-border-normal: 1px dashed #0000002e;
+$neko-forms-input-border-normal: 1px dashed #0000002e;
+$neko-forms-input-border-hover: 1px dashed #af4b787d;
+$neko-forms-input-border-active: 1px solid #ff0078;
+$neko-forms-input-border-valid: 1px dashed #5dc728;
+$neko-forms-input-border-invalid: 1px dashed #ea2229;
+
 html {
   min-height: 100%;
   min-width: 240px;
@@ -88,14 +97,33 @@ body.admin {
     //background: #f1f1f1 url("../images/neko/bg-pattern.png") repeat top;
     background: #efefef; //rgb(249, 249, 249);
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    > div.grid {
+      width: 100%;
+    }
     .container {
       margin-bottom: 0 !important;
       padding-bottom: 88px;
+      .landing .hero-widget .hero-widget__img {
+        display: none;
+      }
     }
   }
   @media only screen and (min-width: 738px) {
-    .container .landing .hero-widget .hero-widget__img {
-      display: block;
+    .container .landing .hero-widget {
+      overflow: hidden;
+      border-radius: 4px;
+      .hero-widget__img,
+      .hero-widget__img img,
+      .hero-widget__text,
+      .hero-widget__footer {
+        border-radius: 0;
+      }
+      .hero-widget__img {
+        display: block;
+      }
     }
   }
   @media only screen and (min-width: $neko-grid-width) {
@@ -113,9 +141,10 @@ body.admin {
       z-index: 0;
     }
     .neko-bg__left {
-      left: -($neko-bg-decor-width + $neko-bg-border-width);
+//      left: -($neko-bg-decor-width + $neko-bg-border-width);
+      left: -($neko-bg-decor-width);
       background-image: url("../images/neko/bg-left_940.jpg");
-      border-right: 1px solid $neko-bg-border-color;
+//      border-right: 1px solid $neko-bg-border-color;
     }
     .neko-bg__left:before {
       content: " ";
@@ -128,9 +157,10 @@ body.admin {
 //      border-right: $neko-bg-border-width solid white;
     }
     .neko-bg__right {
-      right: -($neko-bg-decor-width + $neko-bg-border-width);
+//      right: -($neko-bg-decor-width + $neko-bg-border-width);
+      right: -($neko-bg-decor-width);
       background-image: url("../images/neko/bg-right_940.jpg");
-      border-left: 1px solid $neko-bg-border-color;
+//      border-left: 1px solid $neko-bg-border-color;
     }
     .neko-bg__right:before {
       content: " ";
@@ -166,11 +196,6 @@ body.admin {
     .landing__brand {
       display: none;
     }
-    .hero-widget {
-      .hero-widget__img {
-        display: none;
-      }
-    }
     @media only screen and (min-width: 980px) {
       padding-top: 50px !important;
       padding-bottom: 20px !important;
@@ -202,7 +227,7 @@ body.app-body {
         display: none;
       }
       .columns-area--mobile .status {
-        background: $classic-secondary-color !important;
+        background: $neko-secondary-color !important;
       }
       .compose-form {
         padding: 10px 0 0 0;
@@ -352,7 +377,8 @@ body.with-modals {
     }
     .brand__ankea {
       width: 80px;
-      height: auto;
+      height: 16px;
+      opacity: 0.85;
     }
   }
 }
@@ -367,10 +393,15 @@ body.with-modals {
   }
 }
 
+.public-layout {
+  width: 100%;
+}
+
 .container,
 .public-layout .container {
   max-width: none !important;
 }
+
 
 /*.app-holder,
 .app-holder > div {
@@ -534,7 +565,9 @@ body.with-modals {
   }
 }
 
-.column-header {
+.column-header,
+.column-back-button,
+.column-back-button--slim-button {
   background: url("../images/neko/bg-cloudsbar_1920.jpg") center top/cover repeat white !important;
 //  border-top: 1px solid rgb(181, 206, 218) !important;
   border-bottom: 1px solid rgb(243, 248, 249) !important;
@@ -578,6 +611,9 @@ body.with-modals {
         height: auto;
       }
     }
+    .neko-header__title__tagline {
+      display: none;
+    }
   }
 }
 
@@ -585,8 +621,9 @@ body.with-modals {
   background: linear-gradient(180deg,#fff 0,#f7f7f7 49%,#f0f0f0 97%,#f0f0f0 0,#fff);
   border-bottom: 1px solid #bebebe;
   box-shadow: none;
-  border-radius: 0!important;
-  margin: 0!important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: stretch;
@@ -950,6 +987,9 @@ body.with-modals {
     border-radius: 0 !important;
     background: white;
   }
+  .public-account-bio {
+    border-radius: 4px !important;
+  }
 
   .header {
     background: lighten($ui-base-color, 12%);
@@ -977,4 +1017,94 @@ body.with-modals {
 
 .account__section-headline a.active::after {
   border-color: transparent transparent $white;
+}
+
+.neko-bg {
+  .neko-bg__content {
+    .container-alt {
+      
+    }
+  }
+}
+
+.getting-started__footer {
+  padding: 0 !important;
+  text-align: center;
+}
+
+.compose-panel .navigation-bar {
+  padding: 10px;
+  background: snow;
+  border-radius: 4px;
+}
+
+/* FORM STUFF ============================================================== */
+
+.compose-form {
+  .compose-form__autosuggest-wrapper {
+    border: $neko-input-border-normal;
+    border-bottom: none;
+  }
+  .compose-form__buttons-wrapper {
+    border: $neko-input-border-normal;
+    border-top: none;
+  }
+}
+
+.column-inline-form {
+  label input {
+    border: $neko-input-border-normal;
+  }
+}
+
+.search {
+  label input {
+    border: $neko-input-border-normal;
+  }
+}
+
+.simple_form {
+  .label_input__append:after {
+    background: transparent !important;
+  }
+  input[type=text],
+  input[type=number],
+  input[type=email],
+  input[type=password],
+  textarea {
+    border: $neko-forms-input-border-normal;
+    &:hover {
+      border: $neko-forms-input-border-hover;
+    }
+    &:active,
+    &:focus {
+      border: $neko-forms-input-border-active;
+    }
+    &:focus:invalid:not(:placeholder-shown) {
+      border: $neko-forms-input-border-invalid;
+    }
+    &:required:valid {
+      border: $neko-forms-input-border-valid;
+    }
+  }
+}
+
+/* MODAL OVERLAY =========================================================== */
+
+.modal-root__overlay {
+  background: hsla(221, 10%, 12%, 0.52);
+}
+
+.actions-modal, .boost-modal, .confirmation-modal, .embed-modal, .error-modal, .mute-modal, .onboarding-modal, .report-modal {
+  background: transparent;
+  box-shadow: 0 0 14px 2px #0000006e;
+}
+
+.confirmation-modal__container, .report-modal__target {
+  background: snow;
+}
+
+.boost-modal__action-bar, .confirmation-modal__action-bar, .error-modal__footer, .mute-modal__action-bar, .onboarding-modal__paginator {
+  background: #444b5df2;
+  border-top: 1px dashed #ffffff8c;
 }
