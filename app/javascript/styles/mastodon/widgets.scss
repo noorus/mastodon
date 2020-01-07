@@ -480,10 +480,10 @@ $fluid-breakpoint: $maximum-width + 20px;
   }
 
   &__item {
-    width: (960px - 20px) / 3;
+    width: (1080px - 20px) / 3;
 
     @media screen and (max-width: $fluid-breakpoint) {
-      width: (940px - 20px) / 3;
+      width: (1060px - 20px) / 3;
     }
 
     @media screen and (max-width: 640px) {

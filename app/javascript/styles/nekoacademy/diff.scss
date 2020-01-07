@@ -372,13 +372,15 @@ body.with-modals {
   .brand {
     margin: 0 auto;
     .brand__site {
-      height: 36px;
       width: auto;
+      height: 37px;
+      display: block;
     }
     .brand__ankea {
-      width: 80px;
-      height: 16px;
+      width: auto;
+      height: 15px;
       opacity: 0.85;
+      margin-top: 3px;
     }
   }
 }
@@ -394,7 +396,7 @@ body.with-modals {
 }
 
 .public-layout {
-  width: 100%;
+  width: 100% !important;
 }
 
 .container,
@@ -1107,4 +1109,82 @@ body.with-modals {
 .boost-modal__action-bar, .confirmation-modal__action-bar, .error-modal__footer, .mute-modal__action-bar, .onboarding-modal__paginator {
   background: #444b5df2;
   border-top: 1px dashed #ffffff8c;
+}
+
+/* STATUSES ================================================================ */
+
+$neko-statusposts-font: "Noto Sans JP", "Noto Sans", sans-serif;
+
+.status__content,
+.status__content__read-more-button,
+.compose-form .autosuggest-textarea,
+.compose-form .autosuggest-textarea__textarea,
+.compose-form .spoiler-input__input,
+.reply-indicator .reply-indicator__content,
+.directory__card__extra .account__header__content {
+  font-family: $neko-statusposts-font;
+  font-size: 0.8rem;
+  line-height: 20px;
+  letter-spacing: 0.025em;
+  font-weight: normal;
+}
+
+.display-name,
+.display-name__html,
+.display-name__account,
+.reply-indicator__display-name,
+.reply-indicator__display-name .display-name__account,
+.display-name__html {
+  font-family: $neko-statusposts-font;
+  font-size: 0.85rem;
+  line-height: 1rem;
+}
+
+input#account_display_name,
+textarea#account_note,
+.account_fields_name input,
+.account_fields_value input {
+  font-family: $neko-statusposts-font;
+  font-size: 0.95rem;
+  line-height: 1.2rem;
+  letter-spacing: 0.06em;
+  font-weight: normal;
+  padding: 7px 10px;
+}
+
+// fix image downscaling for avatars and emojis
+
+.account__avatar,
+img.emojione,
+img.custom-emoji {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering:   -o-crisp-edges;
+  image-rendering:      crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+// emoji placement
+.reply-indicator__content .emojione, .status__content .emojione {
+  width: 22px;
+  height: 22px;
+  margin: -0.2ex 0.15em 0.2ex 0.15em;
+}
+
+// statuspost components paddings
+
+.columns-area--mobile .status__content {
+  padding-top: 6px !important;
+}
+
+.status__content__read-more-button {
+  padding: 6px 0 0 !important;
+}
+
+.columns-area--mobile .status .audio-player, .columns-area--mobile .status .media-gallery, .columns-area--mobile .status .video-player, .columns-area--mobile .status__action-bar {
+  margin-top: 8px !important;
+}
+
+.columns-area--mobile .status {
+  padding: 15px 15px 10px 78px !important;
 }

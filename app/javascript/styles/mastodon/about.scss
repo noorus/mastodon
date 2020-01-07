@@ -1,7 +1,7 @@
 $maximum-width: 1235px;
 $fluid-breakpoint: $maximum-width + 20px;
 $column-breakpoint: 700px;
-$small-breakpoint: 960px;
+$small-breakpoint: 1080px;
 
 .container {
   box-sizing: border-box;
@@ -788,7 +788,7 @@ $small-breakpoint: 960px;
   }
 
   &__grid {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 50%) minmax(0, 50%);
