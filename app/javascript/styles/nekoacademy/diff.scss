@@ -54,7 +54,8 @@ body.admin {
 }
 
 .page-header {
-  margin-top: 0 !important;
+  margin-top: 0;
+  border-radius: 0 0 4px 4px;
 }
 
 .admin-wrapper {
@@ -138,7 +139,7 @@ body.admin {
       height: 100%;
       background-size: 100% auto !important;
       background-repeat: no-repeat;
-      z-index: 0;
+      z-index: 1; // hack to cover up unwanted box-shadow bleeds from content
     }
     .neko-bg__left {
 //      left: -($neko-bg-decor-width + $neko-bg-border-width);
@@ -259,6 +260,17 @@ $neko-applayout-break-twopanel: 1190px;
   }
 }
 
+$neko-navigation-font: "Titillium Web", sans-serif;
+
+.navigation-panel {
+  font-family: $neko-navigation-font;
+  font-weight: 600px;
+  .column-link {
+    font-size: 0.95rem;
+    padding: 10px 5px;
+  }
+}
+
 body.app-body.layout-single-column,
 body.with-modals {
   overflow-y: visible !important;
@@ -289,7 +301,7 @@ body.with-modals {
 .neko-footer {
   background: url("../images/neko/footer-bg_2400.jpg"), rgb(255, 47, 109);
   border-top: 0.0625rem solid #b34066;
-  padding: 12px 20px;
+  padding: 12px 20px 0;
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -301,6 +313,9 @@ body.with-modals {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    > div {
+      padding-bottom: 12px;
+    }
     .column-0 {
       grid-column: 1;
       grid-row: 1;
@@ -317,6 +332,7 @@ body.with-modals {
       min-width: 0;
       text-align: center;
       display: none;
+      padding-bottom: 0;
     }
     .column-3 {
       grid-column: 3;
@@ -379,8 +395,8 @@ body.with-modals {
     .brand__ankea {
       width: auto;
       height: 15px;
-      opacity: 0.85;
-      margin-top: 3px;
+      opacity: 0.75;
+      margin: 9px 0 5px;
     }
   }
 }
@@ -570,16 +586,16 @@ body.with-modals {
 .column-header,
 .column-back-button,
 .column-back-button--slim-button {
-  background: url("../images/neko/bg-cloudsbar_1920.jpg") center top/cover repeat white !important;
-//  border-top: 1px solid rgb(181, 206, 218) !important;
-  border-bottom: 1px solid rgb(243, 248, 249) !important;
-  color: white !important;
-  font-weight: bold !important;
-  font-size: 20px !important;
+  background: url("../images/neko/bg-cloudsbar_1920.jpg") center top/cover repeat #54c5fd;
+//  border-top: 1px solid rgb(181, 206, 218);
+  border-bottom: 1px solid rgb(243, 248, 249);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
   min-height: 48px;
   > button {
-    padding: 10px 0 10px 14px !important;
-    text-shadow: rgb(55, 132, 175) 0px 1px 3px !important;
+    padding: 10px 0 10px 14px;
+    text-shadow: rgb(55, 132, 175) 0px 1px 3px;
   }
   .column-header__back-button,
   .column-header__button {
@@ -909,30 +925,6 @@ body.with-modals {
   border-bottom-color: lighten($ui-base-color, 8%);
 }
 
-.activity-stream {
-  .entry {
-    background: $account-background-color;
-
-    .detailed-status.light,
-    .more.light,
-    .status.light {
-      border-bottom-color: lighten($ui-base-color, 8%);
-    }
-  }
-
-  .status.light {
-    .status__content {
-      color: $primary-text-color;
-    }
-
-    .display-name {
-      strong {
-        color: $primary-text-color;
-      }
-    }
-  }
-}
-
 .accounts-grid {
   .account-grid-card {
     .controls {
@@ -1113,31 +1105,67 @@ body.with-modals {
 
 /* STATUSES ================================================================ */
 
-$neko-statusposts-font: "Noto Sans JP", "Noto Sans", sans-serif;
+$neko-statusposts-font: "Noto Sans", "Noto Sans JP", sans-serif;
+$neko-statusposts-color: #150c0a;
+$neko-statusposts-displayname-font: "Noto Sans JP", "Noto Sans", sans-serif;
+$neko-statusposts-accountname-color: #32353c;
+$neko-statusposts-accountname-font: "Titillium Web", sans-serif;
 
 .status__content,
 .status__content__read-more-button,
+.statuses-grid .detailed-status.compact .status__content,
 .compose-form .autosuggest-textarea,
 .compose-form .autosuggest-textarea__textarea,
 .compose-form .spoiler-input__input,
 .reply-indicator .reply-indicator__content,
 .directory__card__extra .account__header__content {
   font-family: $neko-statusposts-font;
-  font-size: 0.8rem;
-  line-height: 20px;
-  letter-spacing: 0.025em;
-  font-weight: normal;
+  font-size: 0.825rem; //0.8rem;
+  line-height: 1.25rem; //20px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  color: $neko-statusposts-color;
+  p {
+    br {
+      content: "";
+      display: block;
+      height: 3px;
+    }
+  }
 }
 
 .display-name,
 .display-name__html,
 .display-name__account,
 .reply-indicator__display-name,
-.reply-indicator__display-name .display-name__account,
 .display-name__html {
-  font-family: $neko-statusposts-font;
+  font-family: $neko-statusposts-displayname-font;
   font-size: 0.85rem;
   line-height: 1rem;
+  strong {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  .display-name__account,
+  > span {
+    padding-top: 1px;
+    color: $neko-statusposts-accountname-color;
+    font-family: $neko-statusposts-accountname-font;
+    font-size: 0.85rem; //0.8rem !important;
+    line-height: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+  }
+}
+
+// profilebox in app view
+.navigation-bar__profile {
+  .navigation-bar__profile-account {
+    font-family: $neko-statusposts-displayname-font;
+    font-size: 0.85rem;
+    line-height: 1rem;
+  }
 }
 
 input#account_display_name,
@@ -1164,17 +1192,36 @@ img.custom-emoji {
   -ms-interpolation-mode: nearest-neighbor;
 }
 
+// emoji interactivity
+img.emojione,
+img.custom-emoji,
+img.status-emoji {
+  vertical-align: middle;
+  transition: transform .2s ease;
+  &:hover {
+    transform: scale(1.5);
+    image-rendering: auto;
+  }
+}
+
 // emoji placement
-.reply-indicator__content .emojione, .status__content .emojione {
+.reply-indicator__content .emojione,
+.status__content .emojione,
+.directory__card .emojione {
   width: 22px;
   height: 22px;
   margin: -0.2ex 0.15em 0.2ex 0.15em;
 }
 
+// allow overflow so emoji can scale up
+.status__content {
+  overflow: visible;
+}
+
 // statuspost components paddings
 
 .columns-area--mobile .status__content {
-  padding-top: 6px !important;
+  padding-top: 4px !important;
 }
 
 .status__content__read-more-button {
@@ -1182,9 +1229,21 @@ img.custom-emoji {
 }
 
 .columns-area--mobile .status .audio-player, .columns-area--mobile .status .media-gallery, .columns-area--mobile .status .video-player, .columns-area--mobile .status__action-bar {
-  margin-top: 8px !important;
+  margin-top: 9px !important;
 }
 
 .columns-area--mobile .status {
-  padding: 15px 15px 10px 78px !important;
+  padding: 15px 15px 11px 78px !important;
+}
+
+.embed .status__content, .public-layout .status__content {
+  padding-top: 0;
+}
+
+.detailed-status__display-name {
+  margin-bottom: 10px;
+}
+
+.statuses-grid .detailed-status.compact .detailed-status__meta {
+  margin-top: 10px;
 }
